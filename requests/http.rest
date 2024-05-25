@@ -1,0 +1,33 @@
+
+GET http://localhost:3001
+###
+DELETE http://localhost:3001/api/2
+###
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: Bearer xxx
+
+{
+    "title":"causal inference for the suicidal",
+    "author":"goolnur",
+    "url":"gulnoor.site",
+    "notInSchema":"garbage"
+}
+###
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{
+    "username":"goolnur",
+    "password":"mango"
+}
+###
+POST http://localhost:3001/api/users
+Content-Type: application/json
+
+{
+    "username":"goolnur",
+    "name":"Gul Noor",
+    "password":"mango"
+}
+###
