@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config();
 
 const { MONGODB_URL_PRODUCTION, PORT, MONGODB_URL_TEST } = process.env;
 
