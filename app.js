@@ -1,31 +1,31 @@
 // const { default: mongoose } = require('mongoose');
-const cors = require("cors");
-const express = require("express");
-require("express-async-errors");
+const cors = require('cors');
+const express = require('express');
+require('express-async-errors');
 const {
   errorHandler,
   requestLogger,
   unknownPathHandler,
   //   getToken,
-} = require("./utils/middleware");
+} = require('./utils/middleware');
 
 const app = express();
 
 // Connect to Mongo database
 // const { MONGODB_URL_PRODUCTION, MONGODB_URL_TEST } = require('./utils/config');
-// const { consoleLog } = require("./utils/logger");
-// const dbURI =
-//   process.env.NODE_ENV === "test" || process.env.NODE_ENV === "development"
-//     ? MONGODB_URL_TEST
-//     : MONGODB_URL_PRODUCTION;
-// mongoose.set("strictQuery", false);
+// const { consoleLog } = require('./utils/logger');
+
+// const dbURI = process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development'
+//   ? MONGODB_URL_TEST
+//   : MONGODB_URL_PRODUCTION;
+// mongoose.set('strictQuery', false);
 // mongoose
 //   .connect(dbURI)
 //   .then(() => {
-//     ("connected to MongoDB");
+//     ('connected to MongoDB');
 //   })
 //   .catch((error) => {
-//     consoleLog("error connecting to MongoDB:", error.message);
+//     consoleLog('error connecting to MongoDB:', error.message);
 //   });
 
 app.use(cors());
