@@ -1,18 +1,23 @@
-
-GET http://localhost:3001
+// get all
+GET http://localhost:3001/api/menu
+###
+// find by id
+GET http://localhost:3001/api/menu/66528b3b612b39bc526bc9d3 HTTP/1.1
 ###
 DELETE http://localhost:3001/api/2
 ###
-POST http://localhost:3001/api/blogs
+POST http://localhost:3001/api/menu
 Content-Type: application/json
 Authorization: Bearer xxx
 
-{
-    "title":"causal inference for the suicidal",
-    "author":"goolnur",
-    "url":"gulnoor.site",
-    "notInSchema":"garbage"
-}
+[
+    {
+        "name": "1"
+    },
+    {
+        "name": 2
+    }
+]
 ###
 POST http://localhost:3001/login
 Content-Type: application/json
