@@ -1,8 +1,8 @@
 const { default: mongoose } = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  items: [{ type: mongoose.Schema.ObjectId, ref: 'menuItem' }],
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'menuItem' }],
 });
 
 orderSchema.set('toJSON', {
@@ -14,5 +14,5 @@ orderSchema.set('toJSON', {
     delete returnedObject.__v;
   },
 });
-const Order = mongoose.model('menuItem', orderSchema);
+const Order = mongoose.model('Order', orderSchema);
 module.exports = Order;

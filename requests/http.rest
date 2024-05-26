@@ -6,18 +6,16 @@ GET http://localhost:3001/api/menu/66528b3b612b39bc526bc9d3 HTTP/1.1
 ###
 DELETE http://localhost:3001/api/2
 ###
-POST http://localhost:3001/api/menu
+POST http://localhost:3001/api/order
 Content-Type: application/json
 Authorization: Bearer xxx
 
-[
+
     {
-        "name": "1"
-    },
-    {
-        "name": 2
+        "userId": 456,
+        "items":[]
     }
-]
+
 ###
 POST http://localhost:3001/api/user
 Content-Type: application/json

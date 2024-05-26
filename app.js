@@ -16,6 +16,7 @@ const app = express();
 // Connect to Mongo database
 const { MONGODB_URL_PRODUCTION, MONGODB_URL_TEST } = require('./utils/config');
 const userController = require('./controllers/userController');
+const orderRouter = require('./controllers/orderController');
 
 const dbURI = process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development'
   ? MONGODB_URL_TEST
@@ -37,6 +38,7 @@ app.use(express.json());
 app.use(requestLogger);
 app.use('/api/menu', menuRouter);
 app.use('/api/user', userController);
+app.use('/api/order', orderRouter);
 app.use(unknownPathHandler);
 app.use(errorHandler);
 
