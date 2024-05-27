@@ -1,17 +1,27 @@
 const { consoleLog } = require('./logger');
 
-const errorHandler = (error, req, res, next) => {
-  consoleLog(error.message);
-  switch (error.name) {
-    case 'JsonWebTokenError':
-      return res.status(401).send({ error: 'Invalid Token' });
-    case 'CastError':
-      return res.status(400).send({ error: 'malformatted id' });
-    case 'ValidationError':
-      return res.status(400).json({ error: error.message });
-    default:
-      return next(error);
+const errorHandler = (error, request, response, next) => {
+  if (error.name === 'CastError') {
+    return response
+      .status(400)
+      .send({ error: `malformatted id:\n${error.message}` });
   }
+  if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message });
+  }
+  if (
+    error.name === 'MongoServerError'
+    && error.message.includes('E11000 duplicate key error')
+  ) {
+    return response
+      .status(400)
+      .json({ error: 'expected `username` to be unique' });
+  }
+  if (error.name === 'JsonWebTokenError') {
+    return response.status(401).json({ error: 'token invalid' });
+  }
+
+  return next(error);
 };
 const getToken = (request, response, next) => {
   const header = request.header('Authorization');

@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
 userController.post('/', async (request, response) => {
+  // TODO: add password validation
   const userData = request.body;
   const hash = await bcrypt.hash(userData.password, 10);
   delete userData.password;

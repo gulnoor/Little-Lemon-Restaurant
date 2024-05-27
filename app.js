@@ -17,6 +17,7 @@ const app = express();
 const { MONGODB_URL_PRODUCTION, MONGODB_URL_TEST } = require('./utils/config');
 const userController = require('./controllers/userController');
 const orderRouter = require('./controllers/orderController');
+const loginRouter = require('./controllers/loginRouter');
 
 const dbURI = process.env.NODE_ENV === 'test' || process.env.NODE_ENV === 'development'
   ? MONGODB_URL_TEST
@@ -39,6 +40,7 @@ app.use(requestLogger);
 app.use('/api/menu', menuRouter);
 app.use('/api/user', userController);
 app.use('/api/order', orderRouter);
+app.use('/api/login', loginRouter);
 app.use(unknownPathHandler);
 app.use(errorHandler);
 

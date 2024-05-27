@@ -3,6 +3,7 @@ const { default: mongoose } = require('mongoose');
 const orderSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   items: [{ type: mongoose.Schema.Types.ObjectId, ref: 'menuItem' }],
+  // date: { type: Date, required: true },
 });
 
 orderSchema.set('toJSON', {
