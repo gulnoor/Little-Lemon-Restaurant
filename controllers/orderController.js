@@ -6,12 +6,7 @@ const { JWT_SEKRET } = require('../utils/config');
 
 // create new order
 orderRouter.post('/', async (request, response) => {
-  const authHeader = request.headers.authorization;
-  let token = null;
-  // extract token from header
-  if (authHeader && authHeader.startsWith('Bearer ')) {
-    token = authHeader.replace('Bearer ', '');
-  }
+  const { token } = request;
   // decode token
   // FIXME: Older tokens that didn't have expiry are still working
   const decodedUser = jwt.verify(token, JWT_SEKRET);

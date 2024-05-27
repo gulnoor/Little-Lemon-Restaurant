@@ -24,8 +24,10 @@ const errorHandler = (error, request, response, next) => {
   return next(error);
 };
 const getToken = (request, response, next) => {
-  const header = request.header('Authorization');
-  request.token = header ? header.replace('Bearer ', '') : null;
+  const authHeader = request.headers.authorization;
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    request.token = authHeader.replace('Bearer ', '');
+  }
   next();
 };
 const requestLogger = (request, response, next) => {

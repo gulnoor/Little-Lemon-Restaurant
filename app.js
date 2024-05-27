@@ -9,6 +9,7 @@ const {
   errorHandler,
   requestLogger,
   unknownPathHandler,
+  getToken,
 } = require('./utils/middleware');
 
 const app = express();
@@ -35,7 +36,7 @@ mongoose
 
 app.use(cors());
 app.use(express.json());
-// app.use(getToken);
+app.use(getToken);
 app.use(requestLogger);
 app.use('/api/menu', menuRouter);
 app.use('/api/user', userController);
